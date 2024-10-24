@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="images/fav-icon.png" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous" />
+    <title>Fish & Meat Products</title>
+</head>
+<body>
+    <!--==Navigation================================-->
+    <nav class="navigation">
+        <a href="index.html" class="logo"> <span>e</span>Grocery </a>
+        <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#category">Categories</a></li>
+            <li><a href="#popular-bundle-pack">Our Packages</a></li>
+            <li><a href="#download-app">Our App</a></li>
+            <li><a href="#recipes">Recipes</a></li>
+        </ul>
+        <div class="right-nav">
+            <a href="#" class="cart" id="cart" onclick="showCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </a>
+        </div>
+    </nav>
+    <!--nav-end--------------------->
+
+    <!--==Products====================================-->
+    <section id="fish-meat-products">
+        <div class="product-heading">
+            <h3>Fish & Meat Products</h3>
+        </div>
+        <div class="product-container">
+            <div class="product-box">
+                <img src="images/chicken.png" alt="Chicken" />
+                <strong>Chicken</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">250 ₹</span>
+                <a href="#" class="cart-btn" onclick="addToCart('Chicken', 250)">
+                    <i class="fas fa-shopping-bag"></i> Add Cart
+                </a>
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+            <div class="product-box">
+                <img src="images/fish.png" alt="Fish" />
+                <strong>Fish</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">300 ₹</span>
+                <a href="#" class="cart-btn" onclick="addToCart('Fish', 300)">
+                    <i class="fas fa-shopping-bag"></i> Add Cart
+                </a>
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+            <div class="product-box">
+                <img src="images/eggs.png" alt="Eggs" />
+                <strong>Eggs</strong>
+                <span class="quantity">12 pcs</span>
+                <span class="price">60 ₹</span>
+                <a href="#" class="cart-btn" onclick="addToCart('Eggs', 60)">
+                    <i class="fas fa-shopping-bag"></i> Add Cart
+                </a>
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+            <div class="product-box">
+                <img src="images/goat.png" alt="Goat Meat" />
+                <strong>Goat Meat</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">500 ₹</span>
+                <a href="#" class="cart-btn" onclick="addToCart('Goat Meat', 500)">
+                    <i class="fas fa-shopping-bag"></i> Add Cart
+                </a>
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+            <div class="product-box">
+                <img src="images/prawn.png" alt="Prawns" />
+                <strong>Prawns</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">600 ₹</span>
+                <a href="#" class="cart-btn" onclick="addToCart('Prawns', 600)">
+                    <i class="fas fa-shopping-bag"></i> Add Cart
+                </a>
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+            <div class="product-box">
+                <img src="images/crab.png" alt="Crab" />
+                <strong>Crab</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">700 ₹</span>
+                <a href="#" class="cart-btn" onclick="addToCart('Crab', 700)">
+                    <i class="fas fa-shopping-bag"></i> Add Cart
+                </a>
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+            <div class="product-box">
+                <img src="images/hams.png" alt="Ham" />
+                <strong>Ham</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">450 ₹</span>
+                <a href="#" class="cart-btn" onclick="addToCart('Ham', 450)">
+                    <i class="fas fa-shopping-bag"></i> Add Cart
+                </a>
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!--fish-meat-end--------------------->
+
+    <!--==Footer========================================-->
+    <footer>
+        <p>&copy; 2024 eGrocery Store. All rights reserved.</p>
+    </footer>
+    <!--footer-end---------------->
+    
+    <script>
+        // Retrieve cart from localStorage, or initialize an empty array if it doesn't exist
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function addToCart(productName, price) {
+            // Add product to the cart
+            cart.push({ name: productName, price: price });
+
+            // Update localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Update cart count displayed on the cart icon
+            document.getElementById('cart-count').innerText = cart.length;
+
+            alert(`${productName} has been added to your cart!`);
+        }
+
+        function showCart() {
+            // Placeholder for cart functionality
+            alert('This is a placeholder for cart functionality. Cart items: ' + JSON.stringify(cart));
+        }
+
+        // Update cart count on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('cart-count').innerText = cart.length;
+        });
+    </script>
+</body>
+</html>

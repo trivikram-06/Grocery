@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="images/fav-icon.png" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <a href="login.html">Login / Sign Up</a>
+
+    <title>eGrocery Store</title>
+    <style>
+        /* Add styles for the cart icon */
+        .cart {
+            position: relative;
+            display: inline-block;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 6px;
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Animation effect for the cart count */
+        .animate {
+            animation: bounce 0.5s;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+      <!-- Display Username -->
+      <div id="welcome-message" style="text-align: right; padding: 10px; font-size: 18px;">
+        <!-- The username will be inserted here -->
+    </div>
+
+    <script>
+        // Get the logged-in username from localStorage
+        const username = localStorage.getItem('loggedInUser');
+        if (username) {
+            // Display the username
+            document.getElementById('welcome-message').innerText = `Welcome, ${username}!`;
+        }
+    </script>
+
+    <!--==Navigation================================-->
+    <nav class="navigation">
+        <!--logo-------->
+        <a href="index.html" class="logo"> <span>e</span>Grocery </a>
+        <!--menu-btn---->
+        <input type="checkbox" class="menu-btn" id="menu-btn" />
+        <label for="menu-btn" class="menu-icon">
+            <span class="nav-icon"></span>
+        </label>
+
+        <!--menu-------->
+        <ul class="menu">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#category">Categories</a></li>
+            <li><a href="#popular-bundle-pack">Our Packages</a></li>
+            <li><a href="#download-app">Our App</a></li>
+            <li><a href="#recipes">Recipes</a></li>
+        </ul>
+        <!--right-nav-(cart-like)-->
+        <div class="right-nav">
+            <!--like-----> 
+            <a href="#" class="like">
+                <i class="far fa-heart"></i>
+                <span>0</span>
+            </a>
+            <!--cart-----> 
+            <a href="#" class="cart" id="cart" onclick="showCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </a>
+        </div>
+    </nav>
+    <!--nav-end--------------------->
+    
+    <!--==Search-banner=======================================-->
+    <section id="search-banner">
+        <img src="images/bg-1.png" class="bg-1" alt="bg" />
+        <img src="images/bg-2.png" class="bg-2" alt="bg-2" />
+        <div class="search-banner-text">
+            <h1>Order Your daily Groceries</h1>
+            <strong>#Free Delivery</strong>
+            <form action="" class="search-box">
+                <i class="fas fa-search"></i>
+                <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Search your daily groceries"
+                    name="search"
+                    required
+                />
+                <input type="submit" class="search-btn" value="Search" />
+            </form>
+        </div>
+    </section>
+    <!--search-banner-end--------------->
+
+    <!--==category=========================================-->
+    <!--==category=========================================-->
+<section id="category">
+  <div class="category-heading">
+      <h2>Category</h2>
+      <span>All</span>
+  </div>
+  <div class="category-container">
+      <a href="fish-and-meat.html" class="category-box">
+          <img src="images/fish.png" alt="Fish" />
+          <span>Fish & Meat</span>
+      </a>
+      <a href="#" class="category-box">
+          <img src="images/Vegetables.png" alt="Vegetables" />
+          <span>Vegetables</span>
+      </a>
+  </div>
+</section>
+    <!--category-end----------------------------------->
+
+<!--==Products====================================-->
+<section id="popular-product">
+  <div class="product-heading">
+      <h3>Popular Products</h3>
+      <span>All</span>
+  </div>
+  <div class="product-container">
+      <div class="product-box">
+          <img src="images/apple.png" alt="apple" />
+          <strong>Apple</strong>
+          <span class="quantity">1 KG</span>
+          <span class="price">2$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Apple', 2)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/chili.png" alt="Chili" />
+          <strong>Chili</strong>
+          <span class="quantity">1 KG</span>
+          <span class="price">3$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Chili', 3)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/onion.png" alt="Onion" />
+          <strong>Onion</strong>
+          <span class="quantity">1 KG</span>
+          <span class="price">1$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Onion', 1)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/patato.png" alt="Potato" />
+          <strong>Potato</strong>
+          <span class="quantity">1 KG</span>
+          <span class="price">2.2$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Potato', 2.2)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/garlic.png" alt="Garlic" />
+          <strong>Garlic</strong>
+          <span class="quantity">1 KG</span>
+          <span class="price">3$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Garlic', 3)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/lemons.png" alt="Lemon" />
+          <strong>Lemon</strong>
+          <span class="quantity">1 KG</span>
+          <span class="price">1.5$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Lemon', 1.5)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="username-display"></div>
+      
+      <!-- New Indian Grocery Items -->
+      <div class="product-box">
+          <img src="images/rice.png" alt="Rice" />
+          <strong>Rice</strong>
+          <span class="quantity">1 KG</span>
+          <span class="price">1.8$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Rice', 1.8)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/lentils.png" alt="Lentils" />
+          <strong>Lentils (Dal)</strong>
+          <span class="quantity">1 KG</span>
+          <span class="price">2.5$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Lentils', 2.5)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/chick.png" alt="Chickpeas" />
+          <strong>Chickpeas (Chana)</strong>
+          <span class="quantity">1 KG</span>
+          <span class="price">2.8$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Chickpeas', 2.8)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/tamato.png" alt="Tomato" />
+          <strong>Tomato</strong>
+          <span class="quantity">1 KG</span>
+          <span class="price">1.2$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Tomato', 1.2)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/greenpeas.png" alt="Green Peas" />
+          <strong>Green Peas</strong>
+          <span class="quantity">1 KG</span>
+          <span class="price">2$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Green Peas', 2)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/Cumins.png" alt="Cumin" />
+          <strong>Cumin (Jeera)</strong>
+          <span class="quantity">100 GM</span>
+          <span class="price">0.8$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Cumin', 0.8)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/tumeric.png" alt="Turmeric" />
+          <strong>Turmeric (Haldi)</strong>
+          <span class="quantity">100 GM</span>
+          <span class="price">0.5$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Turmeric', 0.5)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/ghee.png" alt="Ghee" />
+          <strong>Ghee</strong>
+          <span class="quantity">500 GM</span>
+          <span class="price">4$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Ghee', 4)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/curd.png" alt="Curd" />
+          <strong>Curd (Yogurt)</strong>
+          <span class="quantity">500 GM</span>
+          <span class="price">1.5$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Curd', 1.5)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/coconuts.png" alt="Coconut Milk" />
+          <strong>Coconut Milk</strong>
+          <span class="quantity">400 ML</span>
+          <span class="price">1.5$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Coconut Milk', 1.5)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+      <div class="product-box">
+          <img src="images/paneer.png" alt="Paneer" />
+          <strong>Paneer</strong>
+          <span class="quantity">500 GM</span>
+          <span class="price">3$</span>
+          <a href="#" class="cart-btn" onclick="addToCart('Paneer', 3)">
+              <i class="fas fa-shopping-bag"></i> Add Cart
+          </a>
+          <a href="#" class="like-btn">
+              <i class="far fa-heart"></i>
+          </a>
+      </div>
+  </div>
+</section>
+<!--popular-product-end--------------------->
+
+
+    <!--==Recipe Section===============================-->
+    <!--==Recipe Section===============================-->
+<section id="recipes">
+  <div class="product-heading">
+      <h3>Recipes</h3>
+  </div>
+  <div class="recipe-container">
+      <div class="recipe-box">
+          <img src="images/grill.png" alt="Recipe 1" />
+          <strong>Grilled Chicken</strong>
+          <p>Ingredients: Chicken, Olive Oil, Lemon, Garlic, Herbs</p>
+          <a href="#" class="recipe-btn" onclick="viewRecipe('Grilled Chicken', ['Chicken', 'Olive Oil', 'Lemon', 'Garlic', 'Herbs'], ['1. Marinate chicken with olive oil, lemon, garlic, and herbs.', '2. Preheat grill to medium-high heat.', '3. Grill chicken for 6-7 minutes on each side or until cooked.'])">
+              <i class="fas fa-utensils"></i> View Recipe
+          </a>
+      </div>
+      <div class="recipe-box">
+          <img src="images/fry.jpg" alt="Recipe 2" />
+          <strong>Vegetable Stir Fry</strong>
+          <p>Ingredients: Bell Pepper, Onion, Broccoli, Soy Sauce</p>
+          <a href="#" class="recipe-btn" onclick="viewRecipe('Vegetable Stir Fry', ['Bell Pepper', 'Onion', 'Broccoli', 'Soy Sauce'], ['1. Chop all vegetables.', '2. Heat oil in a pan.', '3. Stir fry vegetables for 5-7 minutes.'])">
+              <i class="fas fa-utensils"></i> View Recipe
+          </a>
+      </div>
+      <!-- New Recipes -->
+      <div class="recipe-box">
+          <img src="images/dosa.png" alt="Dosa" />
+          <strong>Dosa</strong>
+          <p>Ingredients: Rice, Urad Dal, Water, Salt, Oil</p>
+          <a href="#" class="recipe-btn" onclick="viewRecipe('Dosa', ['Rice', 'Urad Dal', 'Water', 'Salt', 'Oil'], ['1. Soak rice and urad dal overnight.', '2. Grind to a smooth batter with water.', '3. Ferment for 8 hours.', '4. Heat a pan and pour a ladle of batter, spreading it thin.', '5. Drizzle with oil and cook until crispy.'])">
+              <i class="fas fa-utensils"></i> View Recipe
+          </a>
+      </div>
+  
+</section>
+<!--recipe-end------------------------------------->
+
+    <!--recipe-end------------------------------------->
+
+    <!--==Download App================================-->
+    <section id="download-app">
+        <div class="app-heading">
+            <h2>Download Our App</h2>
+            <p>Get your groceries delivered to your doorstep!</p>
+        </div>
+        <a href="#" class="app-btn">Download Now</a>
+    </section>
+    <!--download-app-end--------------------->
+
+    <!--==Footer========================================-->
+    <footer>
+        <p>&copy; 2024 eGrocery Store. All rights reserved.</p>
+    </footer>
+    <!--footer-end---------------->
+
+    <!-- Cart Modal -->
+<div id="cart-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeCart()">&times;</span>
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total"></div>
+        <!-- Place Order Button -->
+        <button id="place-order-btn" onclick="placeOrder()" style="margin-top: 20px;">Place Order</button>
+    </div>
+</div>
+
+
+    <script>
+        let cart = [];
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            document.getElementById('cart-count').innerText = cart.length;
+
+            // Add bounce animation
+            const cartCount = document.getElementById('cart-count');
+            cartCount.classList.add('animate');
+
+            // Remove animation class after animation ends
+            cartCount.addEventListener('animationend', function() {
+                cartCount.classList.remove('animate');
+            }, { once: true });
+
+            alert(`${productName} has been added to your cart!`);
+        }
+
+        function showCart() {
+            const cartItemsDiv = document.getElementById('cart-items');
+            cartItemsDiv.innerHTML = ''; // Clear previous items
+
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price;
+                cartItemsDiv.innerHTML += `<p>${item.name} - $${item.price.toFixed(2)}</p>`;
+            });
+
+            document.getElementById('cart-total').innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
+
+            // Display the modal
+            document.getElementById('cart-modal').style.display = 'block';
+        }
+
+        function closeCart() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        function viewRecipe(recipeName, ingredients, steps) {
+            let recipeDetails = `Recipe: ${recipeName}\n\nIngredients:\n- ${ingredients.join('\n- ')}\n\nSteps:\n1. ${steps.join('\n1. ')}`;
+            alert(recipeDetails);
+        }
+    function placeOrder() {
+    if (cart.length === 0) {
+        alert("Your cart is empty! Add items to your cart before placing an order.");
+    } else {
+        // Here you can add further processing like sending the order to the server
+        alert("Your order has been placed! Thank you for shopping with us.");
+        
+        // Optionally, clear the cart after placing the order
+        cart = [];
+        document.getElementById('cart-count').innerText = cart.length;
+        closeCart(); // Close the cart modal
+    }
+}
+function placeOrder() {
+    if (cart.length === 0) {
+        alert("Your cart is empty! Add items to your cart before placing an order.");
+    } else {
+        // Redirect to the address page
+        window.location.href = "address.html"; // Redirect to address input page
+    }
+}
+// Example login function in login.html
+function login() {
+    const username = document.getElementById('username-input').value; // Get the username from the input
+    // Here you would typically verify the login credentials
+    // If login is successful:
+    localStorage.setItem('loggedInUser', username); // Store username in local storage
+    window.location.href = 'index.html'; // Redirect to the index page
+}
+
+
+
+        // Close the modal when clicking anywhere outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('cart-modal');
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+                
+    </script>
+</body>
+</html>

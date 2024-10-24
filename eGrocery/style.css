@@ -1,0 +1,399 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(90deg, rgba(69, 252, 222, 1) 20%, rgba(101, 253, 29, 0.92) 69%);
+    color: #202020;
+}
+
+/* Selection Styles */
+::selection {
+    color: #ffffff;
+    background-color: #40aa54;
+}
+
+/* Navigation Styles */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px;
+    max-width: 1070px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+    display: flex;
+}
+
+.menu li a {
+    padding: 3px 10px;
+    margin: 0 15px;
+    color: #3b3b3b;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.menu li a:hover,
+.menu .active {
+    color: #40aa54;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.right-nav {
+    display: flex;
+    gap: 15px;
+}
+
+/* Search Banner Styles */
+#search-banner {
+    max-width: 1250px;
+    height: 500px;
+    border-radius: 30px;
+    background: #ecf7ee;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    background-image: url('bg.png');
+    background-repeat: no-repeat;
+    background-size: 800px;
+    background-position: bottom right;
+}
+
+.search-banner-text {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin-left: 70px;
+}
+
+.search-banner-text h1 {
+    font-size: 3rem;
+    line-height: 55px;
+}
+
+.search-box {
+    background-color: #ffffff;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    padding: 0 20px;
+    border-radius: 30px;
+}
+
+/* Category Styles */
+/* Category Styles */
+.category-container {
+    display: flex;
+    justify-content: center; /* Center the category boxes */
+    margin-top: 40px;
+    gap: 20px; /* Add some space between category boxes */
+}
+
+.category-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center icons and text within the box */
+    justify-content: center;
+    background-color: #fafafa;
+    border-radius: 10px;
+    min-height: 130px;
+    width: 120px; /* Ensure uniform width for all category boxes */
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease;
+}
+
+.category-box:hover {
+    transform: translateY(-5px);
+}
+
+
+/* Address Page Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px; /* Adjust as necessary */
+    margin: 40px auto; /* Increased margin for better spacing */
+    padding: 20px;
+    background: #ffffff; /* White background for the form */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Darker color for the heading */
+}
+
+label {
+    margin-bottom: 5px; /* Space between label and input */
+    font-weight: bold; /* Bold labels for better readability */
+}
+
+input {
+    margin-bottom: 15px; /* Space between inputs */
+    padding: 10px; /* Add some padding */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 1rem; /* Increase font size for inputs */
+}
+
+/* Submit Button Styles */
+button {
+    padding: 10px;
+    background-color: #40aa54; /* Button color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Button text size */
+    transition: background-color 0.3s ease; /* Transition effect */
+}
+
+button:hover {
+    background-color: #388e41; /* Darker green on hover */
+}
+
+/* Cart Section Styles */
+.cart-container {
+    max-width: 800px; /* Set max width for cart */
+    margin: 40px auto; /* Center cart with margin */
+    padding: 20px; /* Padding around the cart */
+    background: #f9f9f9; /* Light gray background for cart */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.cart-header {
+    text-align: center; /* Center header text */
+    font-size: 1.5rem; /* Header text size */
+    margin-bottom: 20px; /* Space below header */
+    color: #333; /* Darker color for header */
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between cart items */
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between; /* Space between item details */
+    padding: 10px; /* Padding inside each item */
+    background: #ffffff; /* White background for items */
+    border-radius: 5px; /* Rounded corners for items */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.cart-item span {
+    font-size: 1rem; /* Text size for item details */
+    color: #555; /* Dark gray for text */
+}
+
+.cart-total {
+    margin-top: 20px; /* Space above total */
+    font-weight: bold; /* Bold total text */
+    text-align: right; /* Right-align total */
+}
+
+
+/* General Image Styles */
+img {
+    max-width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Category Box Images */
+.category-box img {
+    width: 80px; /* Set a specific width for category images */
+    height: 80px; /* Set a fixed height for consistency */
+    object-fit: cover; /* Crop to fill the box while maintaining aspect ratio */
+}
+
+/* Specific Sizes for Certain Images */
+.apple,
+.garlic,
+.chili,
+.onion,
+.potato {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+/* Popular Product Styles */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+}
+
+/* Product Box Images */
+.product-box img {
+    height: 150px; /* Set a fixed height for consistency */
+    object-fit: cover; /* Crop to fill the box while maintaining aspect ratio */
+}
+
+/* Recipe Section Styles */
+.recipe-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.recipe-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align content within each recipe box */
+    background-color: #fdfdfd; /* Optional: Add a background for recipe boxes */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Optional: Add border for distinction */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    padding: 10px; /* Optional: Add some padding */
+}
+
+.recipe-box img {
+    width: 100%; /* Allow recipe images to fill the box */
+    height: 100px; /* Set a fixed height for consistency */
+    object-fit: cover; /* Crop to fill the box while maintaining aspect ratio */
+}
+
+/* Client Styles */
+#clients {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 0;
+    margin: 40px 0;
+    background-color: #f6f6f656;
+}
+
+/* Partner Logo Styles */
+#partner {
+    margin: 100px auto;
+}
+
+.logo-container img {
+    height: 55px;
+    filter: grayscale(1);
+    transition: filter 0.3s ease;
+}
+
+.logo-container img:hover {
+    filter: grayscale(0);
+}
+
+/* Download App Styles */
+#download-app {
+    max-width: 1150px;
+    width: 100%;
+    background-color: #ecf7ee;
+    height: 400px;
+    margin: 225px auto;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #1b1d1f;
+    padding: 50px 20px;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Responsive Styles */
+@media(max-width: 1280px) {
+    #search-banner {
+        width: 1150px;
+    }
+}
+
+@media(max-width: 1200px) {
+    #search-banner,
+    #popular-bundle-pack,
+    #popular-product,
+    #download-app {
+        width: 90%;
+    }
+}
+
+@media(max-width: 1050px) {
+    .product-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .category-box {
+        margin: 10px;
+    }
+}
+
+@media(max-width: 965px) {
+    .navigation {
+        padding: 35px 25px;
+    }
+
+    #search-banner {
+        height: 400px;
+    }
+
+    .product-container {
+        grid-template-columns: 1fr;
+    }
+
+    #download-app {
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 750px) {
+    #search-banner {
+        height: 300px;
+    }
+
+    .search-banner-text {
+        margin-left: 20px;
+    }
+
+    .client-box-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 500px) {
+    #search-banner {
+        height: 200px;
+    }
+}
+

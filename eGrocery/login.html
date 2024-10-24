@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Login - eGrocery Store</title>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+        .toggle-form {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .toggle-form a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return loginUser()">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" required />
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" required />
+            </div>
+            <input type="submit" value="Login" />
+        </form>
+        <div class="toggle-form">
+            <p>Don't have an account? <a href="#" onclick="toggleToSignup()">Sign Up</a></p>
+        </div>
+
+        <div id="signupSection" style="display: none;">
+            <h2>Sign Up</h2>
+            <form id="signupForm" onsubmit="return signupUser()">
+                <div class="form-group">
+                    <label for="signupName">Name</label>
+                    <input type="text" id="signupName" required />
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required />
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required />
+                </div>
+                <input type="submit" value="Sign Up" />
+            </form>
+            <div class="toggle-form">
+                <p>Already have an account? <a href="#" onclick="toggleToLogin()">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleToSignup() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('signupSection').style.display = 'block';
+        }
+
+        function toggleToLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('signupSection').style.display = 'none';
+        }
+
+        function loginUser() {
+            // You can add your login logic here
+            alert('Login successful!');
+            window.location.href = 'index.html'; // Redirect to index.html
+            return false; // Prevent page refresh
+        }
+
+        function signupUser() {
+            // You can add your signup logic here
+            alert('Sign Up successful! Now you can log in.');
+            toggleToLogin(); // Go back to login form
+            return false; // Prevent page refresh
+        }
+    </script>
+</body>
+</html>
