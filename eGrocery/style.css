@@ -1,9 +1,9 @@
 /* General Styles */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* Ensure consistent box model */
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Global font */
 }
 
 body {
@@ -18,44 +18,107 @@ body {
 }
 
 /* Navigation Styles */
+/* Navigation Bar Styling */
 .navigation {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 35px;
-    max-width: 1070px;
-    margin: auto;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.logo {
+    font-size: 1.5em;
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-btn {
+    display: none; /* Hide checkbox for desktop view */
+}
+
+.menu-icon {
+    display: none; /* Hide menu icon for desktop view */
 }
 
 .menu {
     display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.menu li {
+    display: inline-block;
 }
 
 .menu li a {
-    padding: 3px 10px;
-    margin: 0 15px;
-    color: #3b3b3b;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    transition: color 0.3s ease;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
 }
 
-.menu li a:hover,
-.menu .active {
-    color: #40aa54;
-}
-
-.logo {
-    font-size: 1.4rem;
-    font-weight: 600;
+.menu li a.active,
+.menu li a:hover {
+    color: #00b300; /* Active and hover color */
 }
 
 .right-nav {
     display: flex;
+    align-items: center;
     gap: 15px;
+}
+
+.right-nav a {
+    color: #fff;
+    position: relative;
+    text-decoration: none;
+}
+
+.right-nav a .far,
+.right-nav a .fas {
+    font-size: 1.2em;
+}
+
+.right-nav a span {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #00b300;
+    color: #fff;
+    font-size: 0.8em;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+/* Responsive Styling for Mobile View */
+@media (max-width: 768px) {
+    .menu {
+        display: none; /* Hide menu by default */
+        flex-direction: column;
+        background-color: #333;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+    }
+
+    .menu li {
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .menu-btn:checked ~ .menu {
+        display: flex; /* Show menu when menu-btn is checked */
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
 }
 
 /* Search Banner Styles */
@@ -99,23 +162,22 @@ body {
 }
 
 /* Category Styles */
-/* Category Styles */
 .category-container {
     display: flex;
-    justify-content: center; /* Center the category boxes */
+    justify-content: center; /* Center category boxes */
     margin-top: 40px;
-    gap: 20px; /* Add some space between category boxes */
+    gap: 20px; /* Space between category boxes */
 }
 
 .category-box {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center icons and text within the box */
+    align-items: center; /* Center content */
     justify-content: center;
     background-color: #fafafa;
     border-radius: 10px;
     min-height: 130px;
-    width: 120px; /* Ensure uniform width for all category boxes */
+    width: 120px;
     border: 1px solid rgba(0, 0, 0, 0.03);
     transition: transform 0.2s ease;
 }
@@ -124,117 +186,104 @@ body {
     transform: translateY(-5px);
 }
 
-
 /* Address Page Styles */
 form {
     display: flex;
     flex-direction: column;
-    max-width: 400px; /* Adjust as necessary */
-    margin: 40px auto; /* Increased margin for better spacing */
+    max-width: 400px;
+    margin: 40px auto;
     padding: 20px;
-    background: #ffffff; /* White background for the form */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #333; /* Darker color for the heading */
+    color: #333;
 }
 
 label {
-    margin-bottom: 5px; /* Space between label and input */
-    font-weight: bold; /* Bold labels for better readability */
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 input {
-    margin-bottom: 15px; /* Space between inputs */
-    padding: 10px; /* Add some padding */
-    border: 1px solid #ccc; /* Border style */
-    border-radius: 4px; /* Rounded corners */
-    font-size: 1rem; /* Increase font size for inputs */
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
 /* Submit Button Styles */
 button {
     padding: 10px;
-    background-color: #40aa54; /* Button color */
-    color: white; /* Text color */
-    border: none; /* Remove border */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 1rem; /* Button text size */
-    transition: background-color 0.3s ease; /* Transition effect */
+    background-color: #40aa54;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #388e41; /* Darker green on hover */
+    background-color: #388e41;
 }
 
 /* Cart Section Styles */
 .cart-container {
-    max-width: 800px; /* Set max width for cart */
-    margin: 40px auto; /* Center cart with margin */
-    padding: 20px; /* Padding around the cart */
-    background: #f9f9f9; /* Light gray background for cart */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .cart-header {
-    text-align: center; /* Center header text */
-    font-size: 1.5rem; /* Header text size */
-    margin-bottom: 20px; /* Space below header */
-    color: #333; /* Darker color for header */
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
 }
 
 .cart-items {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Space between cart items */
+    gap: 15px;
 }
 
 .cart-item {
     display: flex;
-    justify-content: space-between; /* Space between item details */
-    padding: 10px; /* Padding inside each item */
-    background: #ffffff; /* White background for items */
-    border-radius: 5px; /* Rounded corners for items */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    justify-content: space-between;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .cart-item span {
-    font-size: 1rem; /* Text size for item details */
-    color: #555; /* Dark gray for text */
+    font-size: 1rem;
+    color: #555;
 }
 
 .cart-total {
-    margin-top: 20px; /* Space above total */
-    font-weight: bold; /* Bold total text */
-    text-align: right; /* Right-align total */
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: right;
 }
-
 
 /* General Image Styles */
 img {
-    max-width: 100%; /* Make images responsive */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 100%;
+    height: auto;
 }
 
 /* Category Box Images */
 .category-box img {
-    width: 80px; /* Set a specific width for category images */
-    height: 80px; /* Set a fixed height for consistency */
-    object-fit: cover; /* Crop to fill the box while maintaining aspect ratio */
-}
-
-/* Specific Sizes for Certain Images */
-.apple,
-.garlic,
-.chili,
-.onion,
-.potato {
     width: 80px;
     height: 80px;
     object-fit: cover;
@@ -242,16 +291,45 @@ img {
 
 /* Popular Product Styles */
 .product-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin: 40px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 
-/* Product Box Images */
+.product-box {
+    width: calc(33% - 20px);
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
 .product-box img {
-    height: 150px; /* Set a fixed height for consistency */
-    object-fit: cover; /* Crop to fill the box while maintaining aspect ratio */
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product-box:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .product-box {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .product-box {
+        width: 100%;
+    }
 }
 
 /* Recipe Section Styles */
@@ -264,17 +342,17 @@ img {
 .recipe-box {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center-align content within each recipe box */
-    background-color: #fdfdfd; /* Optional: Add a background for recipe boxes */
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Optional: Add border for distinction */
-    border-radius: 10px; /* Optional: Add rounded corners */
-    padding: 10px; /* Optional: Add some padding */
+    align-items: center;
+    background-color: #fdfdfd;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .recipe-box img {
-    width: 100%; /* Allow recipe images to fill the box */
-    height: 100px; /* Set a fixed height for consistency */
-    object-fit: cover; /* Crop to fill the box while maintaining aspect ratio */
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
 }
 
 /* Client Styles */
@@ -302,31 +380,197 @@ img {
     filter: grayscale(0);
 }
 
-/* Download App Styles */
+/* Download App Section Styling */
 #download-app {
-    max-width: 1150px;
-    width: 100%;
-    background-color: #ecf7ee;
-    height: 400px;
-    margin: 225px auto;
-    border-radius: 20px;
+    padding: 40px 15px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+/* Heading Styles */
+#download-app .app-heading h2 {
+    font-size: 1.8em; /* Reduced font size */
+    color: #333;
+    margin-bottom: 8px; /* Less margin for tighter spacing */
+}
+
+#download-app .app-heading p {
+    font-size: 1em; /* Reduced font size for paragraph */
+    color: #666;
+    margin-bottom: 20px; /* Less margin for a compact look */
+}
+
+/* App Promo Container */
+.app-promo-container {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
+    gap: 15px; /* Reduced gap for tighter layout */
+}
+
+/* App Logo and Preview Image */
+.app-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Smaller App Logo */
+.app-logo {
+    width: 50px; /* Smaller logo */
+    margin-bottom: 5px;
+}
+
+/* Smaller Preview Image */
+.app-preview-image {
+    width: 200px; /* Reduced width of preview image */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a clean look */
+}
+
+/* Download Buttons */
+.download-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px; /* Less margin for tighter layout */
+}
+
+/* Smaller Store Badge Size */
+.store-badge {
+    width: 110px; /* Reduced width */
+    height: auto;
+}
+
+/* App Button Styling */
+.app-btn {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.app-btn img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+/* Hover Effect */
+.app-btn:hover img {
+    transform: scale(1.05);
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .app-preview-image {
+        width: 200px;
+    }
+    .store-badge {
+        width: 120px;
+    }
 }
 
 /* Footer Styles */
 footer {
-    background-color: #1b1d1f;
-    padding: 50px 20px;
+    background-color: #1b1d1f; /* Dark background color */
+    padding: 30px 20px; /* Adjusted padding for a tighter layout */
+    color: #f0f0f0; /* Light color for better contrast */
+    text-align: center; /* Center-align text */
+    font-size: 0.9em; /* Slightly smaller font size */
 }
 
+/* Footer Styles */
+footer {
+    background-color: #1b1d1f; /* Dark background color */
+    padding: 30px 20px;
+    color: #f0f0f0;
+    text-align: center; /* Center-align text */
+    width: 100%; /* Full width */
+    position: relative; /* Add this to adjust positioning if needed */
+    bottom: 0;
+}
+
+/* Footer Content Container */
 .footer-container {
     max-width: 1100px;
     margin: auto;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center;
+    justify-content: center;
 }
+
+/* Footer Text */
+footer p {
+    margin: 0;
+    color: #dcdcdc; /* Light gray text for better contrast */
+}
+
+/* Link Styles in Footer */
+footer a {
+    color: #f0f0f0; /* Light color for links */
+    text-decoration: none;
+    margin-left: 8px;
+}
+
+footer a:hover {
+    color: #ffffff; /* Brighter color on hover */
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+ul, ol {
+    margin-left: 20px;
+}
+
+ul li, ol li {
+    margin-bottom: 10px;
+}
+
+
 
 /* Responsive Styles */
 @media(max-width: 1280px) {
@@ -396,4 +640,3 @@ footer {
         height: 200px;
     }
 }
-

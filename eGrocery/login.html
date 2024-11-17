@@ -112,25 +112,29 @@
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('signupSection').style.display = 'block';
         }
-
+    
         function toggleToLogin() {
             document.getElementById('loginForm').style.display = 'block';
             document.getElementById('signupSection').style.display = 'none';
         }
-
+    
         function loginUser() {
-            // You can add your login logic here
-            alert('Login successful!');
-            window.location.href = 'index.html'; // Redirect to index.html
-            return false; // Prevent page refresh
-        }
+        const email = document.getElementById('loginEmail').value;
 
+        // Store the user's email or name in localStorage
+        localStorage.setItem('loggedInUser', email);
+
+        alert('Login successful!');
+        window.location.href = 'index.html'; // Redirect to index.html
+        return false; // Prevent page refresh
+    }
+    
         function signupUser() {
-            // You can add your signup logic here
             alert('Sign Up successful! Now you can log in.');
-            toggleToLogin(); // Go back to login form
+            toggleToLogin(); // Switch to login form
             return false; // Prevent page refresh
         }
     </script>
+    
 </body>
 </html>

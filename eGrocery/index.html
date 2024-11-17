@@ -21,60 +21,64 @@
     <a href="login.html">Login / Sign Up</a>
 
     <title>eGrocery Store</title>
+    <div id="user-greeting"></div>
     <style>
         /* Add styles for the cart icon */
-        .cart {
-            position: relative;
-            display: inline-block;
-        }
+.cart {
+    position: relative;
+    display: inline-block;
+}
 
-        #cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: red;
-            color: white;
-            border-radius: 50%;
-            padding: 3px 6px;
-            font-size: 12px;
-            transition: transform 0.3s ease;
-        }
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
 
         /* Modal styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    overflow: auto;
+}
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-        }
+.modal-content {
+    position: relative;
+    margin: 15% auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+}
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+.close:hover,
+.close:focus {
+    color: black;
+    cursor: pointer;
+}
 
         /* Animation effect for the cart count */
         .animate {
@@ -112,7 +116,7 @@
     <!--==Navigation================================-->
     <nav class="navigation">
         <!--logo-------->
-        <a href="index.html" class="logo"> <span>e</span>Grocery </a>
+        <a href="index.html" class="logo"> <span>e</span>GROSO</a>
         <!--menu-btn---->
         <input type="checkbox" class="menu-btn" id="menu-btn" />
         <label for="menu-btn" class="menu-icon">
@@ -123,7 +127,6 @@
         <ul class="menu">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="#category">Categories</a></li>
-            <li><a href="#popular-bundle-pack">Our Packages</a></li>
             <li><a href="#download-app">Our App</a></li>
             <li><a href="#recipes">Recipes</a></li>
         </ul>
@@ -187,276 +190,495 @@
 
 <!--==Products====================================-->
 <section id="popular-product">
-  <div class="product-heading">
-      <h3>Popular Products</h3>
-      <span>All</span>
-  </div>
-  <div class="product-container">
-      <div class="product-box">
-          <img src="images/apple.png" alt="apple" />
-          <strong>Apple</strong>
-          <span class="quantity">1 KG</span>
-          <span class="price">2$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Apple', 2)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/chili.png" alt="Chili" />
-          <strong>Chili</strong>
-          <span class="quantity">1 KG</span>
-          <span class="price">3$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Chili', 3)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/onion.png" alt="Onion" />
-          <strong>Onion</strong>
-          <span class="quantity">1 KG</span>
-          <span class="price">1$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Onion', 1)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/patato.png" alt="Potato" />
-          <strong>Potato</strong>
-          <span class="quantity">1 KG</span>
-          <span class="price">2.2$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Potato', 2.2)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/garlic.png" alt="Garlic" />
-          <strong>Garlic</strong>
-          <span class="quantity">1 KG</span>
-          <span class="price">3$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Garlic', 3)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/lemons.png" alt="Lemon" />
-          <strong>Lemon</strong>
-          <span class="quantity">1 KG</span>
-          <span class="price">1.5$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Lemon', 1.5)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="username-display"></div>
-      
-      <!-- New Indian Grocery Items -->
-      <div class="product-box">
-          <img src="images/rice.png" alt="Rice" />
-          <strong>Rice</strong>
-          <span class="quantity">1 KG</span>
-          <span class="price">1.8$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Rice', 1.8)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/lentils.png" alt="Lentils" />
-          <strong>Lentils (Dal)</strong>
-          <span class="quantity">1 KG</span>
-          <span class="price">2.5$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Lentils', 2.5)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/chick.png" alt="Chickpeas" />
-          <strong>Chickpeas (Chana)</strong>
-          <span class="quantity">1 KG</span>
-          <span class="price">2.8$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Chickpeas', 2.8)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/tamato.png" alt="Tomato" />
-          <strong>Tomato</strong>
-          <span class="quantity">1 KG</span>
-          <span class="price">1.2$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Tomato', 1.2)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/greenpeas.png" alt="Green Peas" />
-          <strong>Green Peas</strong>
-          <span class="quantity">1 KG</span>
-          <span class="price">2$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Green Peas', 2)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/Cumins.png" alt="Cumin" />
-          <strong>Cumin (Jeera)</strong>
-          <span class="quantity">100 GM</span>
-          <span class="price">0.8$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Cumin', 0.8)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/tumeric.png" alt="Turmeric" />
-          <strong>Turmeric (Haldi)</strong>
-          <span class="quantity">100 GM</span>
-          <span class="price">0.5$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Turmeric', 0.5)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/ghee.png" alt="Ghee" />
-          <strong>Ghee</strong>
-          <span class="quantity">500 GM</span>
-          <span class="price">4$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Ghee', 4)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/curd.png" alt="Curd" />
-          <strong>Curd (Yogurt)</strong>
-          <span class="quantity">500 GM</span>
-          <span class="price">1.5$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Curd', 1.5)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/coconuts.png" alt="Coconut Milk" />
-          <strong>Coconut Milk</strong>
-          <span class="quantity">400 ML</span>
-          <span class="price">1.5$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Coconut Milk', 1.5)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-      <div class="product-box">
-          <img src="images/paneer.png" alt="Paneer" />
-          <strong>Paneer</strong>
-          <span class="quantity">500 GM</span>
-          <span class="price">3$</span>
-          <a href="#" class="cart-btn" onclick="addToCart('Paneer', 3)">
-              <i class="fas fa-shopping-bag"></i> Add Cart
-          </a>
-          <a href="#" class="like-btn">
-              <i class="far fa-heart"></i>
-          </a>
-      </div>
-  </div>
-</section>
+    <div class="product-heading">
+        <h3>Popular Products</h3>
+        <span>All</span>
+    </div>
+    <div class="product-container">
+  
+        <!-- Apple Product Box -->
+        <div class="product-box" data-price="220">
+            <img src="images/apple.png" alt="Apple" />
+            <strong>Apple</strong>
+            <span class="quantity">Select Quantity:</span>
+            <select onchange="updatePrice(this, 'Apple')">
+                <option value="1">1 KG - 220 RS</option>
+                <option value="0.5">0.5 KG - 110 RS</option>
+                <option value="0.25">0.25 KG - 55 RS</option>
+            </select>
+            <span class="price" id="price-Apple">220 RS</span>
+            <a href="#" class="cart-btn" onclick="addToCart('Apple', document.getElementById('price-Apple').innerText)">
+                <i class="fas fa-shopping-bag"></i> Add Cart
+            </a>
+            <a href="#" class="like-btn">
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+  
+        <!-- Chili Product Box -->
+        <div class="product-box" data-price="50">
+            <img src="images/chili.png" alt="Chili" />
+            <strong>Chili</strong>
+            <span class="quantity">Select Quantity:</span>
+            <select onchange="updatePrice(this, 'Chili')">
+                <option value="1">1 KG - 50 RS</option>
+                <option value="0.5">0.5 KG - 25 RS</option>
+                <option value="0.25">0.25 KG - 12.5 RS</option>
+            </select>
+            <span class="price" id="price-Chili">50 RS</span>
+            <a href="#" class="cart-btn" onclick="addToCart('Chili', document.getElementById('price-Chili').innerText)">
+                <i class="fas fa-shopping-bag"></i> Add Cart
+            </a>
+            <a href="#" class="like-btn">
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+  
+        <!-- Onion Product Box -->
+        <div class="product-box" data-price="100">
+            <img src="images/onion.png" alt="Onion" />
+            <strong>Onion</strong>
+            <span class="quantity">Select Quantity:</span>
+            <select onchange="updatePrice(this, 'Onion')">
+                <option value="1">1 KG - 100 RS</option>
+                <option value="0.5">0.5 KG - 50 RS</option>
+                <option value="0.25">0.25 KG - 25 RS</option>
+            </select>
+            <span class="price" id="price-Onion">100 RS</span>
+            <a href="#" class="cart-btn" onclick="addToCart('Onion', document.getElementById('price-Onion').innerText)">
+                <i class="fas fa-shopping-bag"></i> Add Cart
+            </a>
+            <a href="#" class="like-btn">
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+  
+        <!-- Potato Product Box -->
+        <div class="product-box" data-price="70">
+            <img src="images/patato.png" alt="Potato" />
+            <strong>Potato</strong>
+            <span class="quantity">Select Quantity:</span>
+            <select onchange="updatePrice(this, 'Potato')">
+                <option value="1">1 KG - 70 RS</option>
+                <option value="0.5">0.5 KG - 35 RS</option>
+                <option value="0.25">0.25 KG - 17.5 RS</option>
+            </select>
+            <span class="price" id="price-Potato">70 RS</span>
+            <a href="#" class="cart-btn" onclick="addToCart('Potato', document.getElementById('price-Potato').innerText)">
+                <i class="fas fa-shopping-bag"></i> Add Cart
+            </a>
+            <a href="#" class="like-btn">
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+  
+        <!-- Garlic Product Box -->
+        <div class="product-box" data-price="110">
+            <img src="images/garlic.png" alt="Garlic" />
+            <strong>Garlic</strong>
+            <span class="quantity">Select Quantity:</span>
+            <select onchange="updatePrice(this, 'Garlic')">
+                <option value="1">1 KG - 110 RS</option>
+                <option value="0.5">0.5 KG - 55 RS</option>
+                <option value="0.25">0.25 KG - 27.5 RS</option>
+            </select>
+            <span class="price" id="price-Garlic">110 RS</span>
+            <a href="#" class="cart-btn" onclick="addToCart('Garlic', document.getElementById('price-Garlic').innerText)">
+                <i class="fas fa-shopping-bag"></i> Add Cart
+            </a>
+            <a href="#" class="like-btn">
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+  
+        <!-- Lemon Product Box -->
+        <div class="product-box" data-price="55">
+            <img src="images/lemons.png" alt="Lemon" />
+            <strong>Lemon</strong>
+            <span class="quantity">Select Quantity:</span>
+            <select onchange="updatePrice(this, 'Lemon')">
+                <option value="1">1 KG - 55 RS</option>
+                <option value="0.5">0.5 KG - 27.5 RS</option>
+                <option value="0.25">0.25 KG - 13.75 RS</option>
+            </select>
+            <span class="price" id="price-Lemon">55 RS</span>
+            <a href="#" class="cart-btn" onclick="addToCart('Lemon', document.getElementById('price-Lemon').innerText)">
+                <i class="fas fa-shopping-bag"></i> Add Cart
+            </a>
+            <a href="#" class="like-btn">
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+  
+        <!-- Rice Product Box -->
+        <div class="product-box" data-price="285">
+            <img src="images/rice.png" alt="Rice" />
+            <strong>Rice</strong>
+            <span class="quantity">Select Quantity:</span>
+            <select onchange="updatePrice(this, 'Rice')">
+                <option value="1">1 KG - 285 RS</option>
+                <option value="0.5">0.5 KG - 142.5 RS</option>
+                <option value="0.25">0.25 KG - 71.25 RS</option>
+            </select>
+            <span class="price" id="price-Rice">285 RS</span>
+            <a href="#" class="cart-btn" onclick="addToCart('Rice', document.getElementById('price-Rice').innerText)">
+                <i class="fas fa-shopping-bag"></i> Add Cart
+            </a>
+            <a href="#" class="like-btn">
+                <i class="far fa-heart"></i>
+            </a>
+        </div>
+  
+        <section id="popular-product">
+            <div class="product-heading">
+                <h3>Popular Products</h3>
+                <span>All</span>
+            </div>
+            <div class="product-container">
+          
+                <!-- Lentils Product Box -->
+                <div class="product-box" data-price="300">
+                    <img src="images/download.jpg" alt="Lentils" />
+                    <strong>Lentils (Dal)</strong>
+                    <span class="quantity">Select Quantity:</span>
+                    <select onchange="updatePrice(this, 'Lentils')">
+                        <option value="1">1 KG - 300 RS</option>
+                        <option value="0.5">0.5 KG - 150 RS</option>
+                        <option value="0.25">0.25 KG - 75 RS</option>
+                    </select>
+                    <span class="price" id="price-Lentils">300 RS</span>
+                    <a href="#" class="cart-btn" onclick="addToCart('Lentils', document.getElementById('price-Lentils').innerText)">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+          
+                <!-- Chickpeas Product Box -->
+                <div class="product-box" data-price="240">
+                    <img src="images/chick.png" alt="Chickpeas" />
+                    <strong>Chickpeas (Chana)</strong>
+                    <span class="quantity">Select Quantity:</span>
+                    <select onchange="updatePrice(this, 'Chickpeas')">
+                        <option value="1">1 KG - 240 RS</option>
+                        <option value="0.5">0.5 KG - 120 RS</option>
+                        <option value="0.25">0.25 KG - 60 RS</option>
+                    </select>
+                    <span class="price" id="price-Chickpeas">240 RS</span>
+                    <a href="#" class="cart-btn" onclick="addToCart('Chickpeas', document.getElementById('price-Chickpeas').innerText)">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+          
+                <!-- Tomato Product Box -->
+                <div class="product-box" data-price="180">
+                    <img src="images/tamato.png" alt="Tomato" />
+                    <strong>Tomato</strong>
+                    <span class="quantity">Select Quantity:</span>
+                    <select onchange="updatePrice(this, 'Tomato')">
+                        <option value="1">1 KG - 180 RS</option>
+                        <option value="0.5">0.5 KG - 90 RS</option>
+                        <option value="0.25">0.25 KG - 45 RS</option>
+                    </select>
+                    <span class="price" id="price-Tomato">180 RS</span>
+                    <a href="#" class="cart-btn" onclick="addToCart('Tomato', document.getElementById('price-Tomato').innerText)">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+          
+                <!-- Green Peas Product Box -->
+                <div class="product-box" data-price="150">
+                    <img src="images/greenpeas.png" alt="Green Peas" />
+                    <strong>Green Peas</strong>
+                    <span class="quantity">Select Quantity:</span>
+                    <select onchange="updatePrice(this, 'Green Peas')">
+                        <option value="1">1 KG - 150 RS</option>
+                        <option value="0.5">0.5 KG - 75 RS</option>
+                        <option value="0.25">0.25 KG - 37.5 RS</option>
+                    </select>
+                    <span class="price" id="price-GreenPeas">150 RS</span>
+                    <a href="#" class="cart-btn" onclick="addToCart('Green Peas', document.getElementById('price-GreenPeas').innerText)">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+          
+                <!-- Cumin Product Box -->
+                <div class="product-box" data-price="40">
+                    <img src="images/Cumins.png" alt="Cumin" />
+                    <strong>Cumin (Jeera)</strong>
+                    <span class="quantity">Select Quantity:</span>
+                    <select onchange="updatePrice(this, 'Cumin')">
+                        <option value="0.1">100 GM - 40 RS</option>
+                        <option value="0.05">50 GM - 20 RS</option>
+                        <option value="0.025">25 GM - 10 RS</option>
+                    </select>
+                    <span class="price" id="price-Cumin">40 RS</span>
+                    <a href="#" class="cart-btn" onclick="addToCart('Cumin', document.getElementById('price-Cumin').innerText)">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+          
+                <!-- Turmeric Product Box -->
+                <div class="product-box" data-price="30">
+                    <img src="images/tumeric.png" alt="Turmeric" />
+                    <strong>Turmeric (Haldi)</strong>
+                    <span class="quantity">Select Quantity:</span>
+                    <select onchange="updatePrice(this, 'Turmeric')">
+                        <option value="0.1">100 GM - 30 RS</option>
+                        <option value="0.05">50 GM - 15 RS</option>
+                        <option value="0.025">25 GM - 7.5 RS</option>
+                    </select>
+                    <span class="price" id="price-Turmeric">30 RS</span>
+                    <a href="#" class="cart-btn" onclick="addToCart('Turmeric', document.getElementById('price-Turmeric').innerText)">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+          
+                <!-- Ghee Product Box -->
+                <div class="product-box" data-price="300">
+                    <img src="images/ghee.png" alt="Ghee" />
+                    <strong>Ghee</strong>
+                    <span class="quantity">Select Quantity:</span>
+                    <select onchange="updatePrice(this, 'Ghee')">
+                        <option value="0.5">500 GM - 300 RS</option>
+                        <option value="0.25">250 GM - 150 RS</option>
+                        <option value="0.125">125 GM - 75 RS</option>
+                    </select>
+                    <span class="price" id="price-Ghee">300 RS</span>
+                    <a href="#" class="cart-btn" onclick="addToCart('Ghee', document.getElementById('price-Ghee').innerText)">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+          
+                <!-- Curd Product Box -->
+                <div class="product-box" data-price="150">
+                    <img src="images/curd.png" alt="Curd" />
+                    <strong>Curd (Yogurt)</strong>
+                    <span class="quantity">Select Quantity:</span>
+                    <select onchange="updatePrice(this, 'Curd')">
+                        <option value="0.5">500 GM - 150 RS</option>
+                        <option value="0.25">250 GM - 75 RS</option>
+                        <option value="0.125">125 GM - 37.5 RS</option>
+                    </select>
+                    <span class="price" id="price-Curd">150 RS</span>
+                    <a href="#" class="cart-btn" onclick="addToCart('Curd', document.getElementById('price-Curd').innerText)">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+          
+                <!-- Coconut Milk Product Box -->
+                <div class="product-box" data-price="80">
+                    <img src="images/coconuts.png" alt="Coconut Milk" />
+                    <strong>Coconut Milk</strong>
+                    <span class="quantity">Select Quantity:</span>
+                    <select onchange="updatePrice(this, 'Coconut Milk')">
+                        <option value="0.4">400 ML - 80 RS</option>
+                        <option value="0.2">200 ML - 40 RS</option>
+                        <option value="0.1">100 ML - 20 RS</option>
+                    </select>
+                    <span class="price" id="price-CoconutMilk">80 RS</span>
+                    <a href="#" class="cart-btn" onclick="addToCart('Coconut Milk', document.getElementById('price-CoconutMilk').innerText)">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+          
+                <!-- Paneer Product Box -->
+                <div class="product-box" data-price="140">
+                    <img src="images/paneer.png" alt="Paneer" />
+                    <strong>Paneer</strong>
+                    <span class="quantity">Select Quantity:</span>
+                    <select onchange="updatePrice(this, 'Paneer')">
+                        <option value="0.5">500 GM - 140 RS</option>
+                        <option value="0.25">250 GM - 70 RS</option>
+                        <option value="0.125">125 GM - 35 RS</option>
+                    </select>
+                    <span class="price" id="price-Paneer">140 RS</span>
+                    <a href="#" class="cart-btn" onclick="addToCart('Paneer', document.getElementById('price-Paneer').innerText)">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+            </div>
+          </section>
+          
+          <script>
+          // Function to update price dynamically based on selected quantity
+    function updatePrice(select, productName) {
+    const selectedValue = select.options[select.selectedIndex].value;
+    const priceText = select.options[select.selectedIndex].text.split(" - ")[1];
+    document.getElementById('price-' + productName).innerText = priceText;
+}
+
+          
+          // Function to handle adding items to the cart
+          function addToCart(productName, price) {
+              alert(productName + ' added to cart. Price: ' + price);
+          }
+          </script>
+          
 <!--popular-product-end--------------------->
 
 
-    <!--==Recipe Section===============================-->
-    <!--==Recipe Section===============================-->
 <section id="recipes">
-  <div class="product-heading">
-      <h3>Recipes</h3>
-  </div>
-  <div class="recipe-container">
-      <div class="recipe-box">
-          <img src="images/grill.png" alt="Recipe 1" />
-          <strong>Grilled Chicken</strong>
-          <p>Ingredients: Chicken, Olive Oil, Lemon, Garlic, Herbs</p>
-          <a href="#" class="recipe-btn" onclick="viewRecipe('Grilled Chicken', ['Chicken', 'Olive Oil', 'Lemon', 'Garlic', 'Herbs'], ['1. Marinate chicken with olive oil, lemon, garlic, and herbs.', '2. Preheat grill to medium-high heat.', '3. Grill chicken for 6-7 minutes on each side or until cooked.'])">
-              <i class="fas fa-utensils"></i> View Recipe
-          </a>
-      </div>
-      <div class="recipe-box">
-          <img src="images/fry.jpg" alt="Recipe 2" />
-          <strong>Vegetable Stir Fry</strong>
-          <p>Ingredients: Bell Pepper, Onion, Broccoli, Soy Sauce</p>
-          <a href="#" class="recipe-btn" onclick="viewRecipe('Vegetable Stir Fry', ['Bell Pepper', 'Onion', 'Broccoli', 'Soy Sauce'], ['1. Chop all vegetables.', '2. Heat oil in a pan.', '3. Stir fry vegetables for 5-7 minutes.'])">
-              <i class="fas fa-utensils"></i> View Recipe
-          </a>
-      </div>
-      <!-- New Recipes -->
-      <div class="recipe-box">
-          <img src="images/dosa.png" alt="Dosa" />
-          <strong>Dosa</strong>
-          <p>Ingredients: Rice, Urad Dal, Water, Salt, Oil</p>
-          <a href="#" class="recipe-btn" onclick="viewRecipe('Dosa', ['Rice', 'Urad Dal', 'Water', 'Salt', 'Oil'], ['1. Soak rice and urad dal overnight.', '2. Grind to a smooth batter with water.', '3. Ferment for 8 hours.', '4. Heat a pan and pour a ladle of batter, spreading it thin.', '5. Drizzle with oil and cook until crispy.'])">
-              <i class="fas fa-utensils"></i> View Recipe
-          </a>
-      </div>
+    <div class="product-heading">
+        <h3>Recipes</h3>
+    </div>
+    <div class="recipe-container">
+        <div class="recipe-box">
+            <img src="images/grill.png" alt="Grilled Chicken" />
+            <strong>Grilled Chicken</strong>
+            <p>Ingredients: Chicken, Olive Oil, Lemon, Garlic, Herbs</p>
+            <a href="#" class="recipe-btn" onclick="viewRecipe('Grilled Chicken', 
+            ['Chicken', 'Olive Oil', 'Lemon', 'Garlic', 'Herbs'], 
+            ['1. Marinate chicken with olive oil, lemon, garlic, and herbs.',
+             '2. Preheat grill to medium-high heat.',
+             '3. Grill chicken for 6-7 minutes on each side or until cooked.'])">
+                <i class="fas fa-utensils"></i> View Recipe
+            </a>
+        </div>
+        <div class="recipe-box">
+            <img src="images/fry.jpg" alt="Vegetable Stir Fry" />
+            <strong>Vegetable Stir Fry</strong>
+            <p>Ingredients: Bell Pepper, Onion, Broccoli, Soy Sauce</p>
+            <a href="#" class="recipe-btn" onclick="viewRecipe('Vegetable Stir Fry', 
+            ['Bell Pepper', 'Onion', 'Broccoli', 'Soy Sauce'], 
+            ['1. Chop all vegetables.',
+             '2. Heat oil in a pan.',
+             '3. Stir fry vegetables for 5-7 minutes.'])">
+                <i class="fas fa-utensils"></i> View Recipe
+            </a>
+        </div>
+        <div class="recipe-box">
+            <img src="images/dosa.png" alt="Dosa" />
+            <strong>Dosa</strong>
+            <p>Ingredients: Rice, Urad Dal, Water, Salt, Oil</p>
+            <a href="#" class="recipe-btn" onclick="viewRecipe('Dosa', 
+            ['Rice', 'Urad Dal', 'Water', 'Salt', 'Oil'], 
+            ['1. Soak rice and urad dal overnight.',
+             '2. Grind to a smooth batter with water.',
+             '3. Ferment for 8 hours.',
+             '4. Heat a pan and pour a ladle of batter, spreading it thin.',
+             '5. Drizzle with oil and cook until crispy.'])">
+                <i class="fas fa-utensils"></i> View Recipe
+            </a>
+        </div>
+    </div>
+  </section>
+  <!-- Recipe Modal -->
+<div id="recipe-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeRecipe()">&times;</span>
+        <h2 id="recipe-title"></h2>
+        <h3>Ingredients</h3>
+        <ul id="recipe-ingredients"></ul>
+        <h3>Steps</h3>
+        <ol id="recipe-steps"></ol>
+    </div>
+</div>
+<script>
+    // Function to open the recipe modal and populate it with the recipe details
+    function viewRecipe(title, ingredients, steps) {
+        // Set the recipe title
+        document.getElementById('recipe-title').textContent = title;
+
+        // Clear previous ingredients and steps
+        document.getElementById('recipe-ingredients').innerHTML = '';
+        document.getElementById('recipe-steps').innerHTML = '';
+
+        // Populate ingredients list
+        ingredients.forEach(ingredient => {
+            const li = document.createElement('li');
+            li.textContent = ingredient;
+            document.getElementById('recipe-ingredients').appendChild(li);
+        });
+
+        // Populate steps list
+        steps.forEach(step => {
+            const li = document.createElement('li');
+            li.textContent = step;
+            document.getElementById('recipe-steps').appendChild(li);
+        });
+
+        // Show the recipe modal
+        document.getElementById('recipe-modal').style.display = 'block';
+    }
+
+    // Function to close the recipe modal
+    function closeRecipe() {
+        document.getElementById('recipe-modal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        const modal = document.getElementById('recipe-modal');
+        if (event.target === modal) {
+            closeRecipe();
+        }
+    };
+</script>
   
-</section>
 <!--recipe-end------------------------------------->
 
     <!--recipe-end------------------------------------->
 
-    <!--==Download App================================-->
     <section id="download-app">
         <div class="app-heading">
             <h2>Download Our App</h2>
             <p>Get your groceries delivered to your doorstep!</p>
         </div>
-        <a href="#" class="app-btn">Download Now</a>
+    
+        <div class="app-promo-container">
+            <!-- App Logo -->
+            <img src="images/logo.jpg" alt="App Logo" class="app-logo">
+    
+    
+            <!-- Download Buttons -->
+            <div class="download-buttons">
+                <a href="#" class="app-btn">
+                    <img src="images/apps.jpg" alt="Download on Google Play" class="store-badge">
+                </a>
+                <a href="#" class="app-btn">
+                    <img src="images/appp.jpg" alt="Download on the App Store" class="store-badge">
+                </a>
+            </div>
+        </div>
     </section>
-    <!--download-app-end--------------------->
+    
+<!--download-app-end--------------------->
 
-    <!--==Footer========================================-->
-    <footer>
+
+<footer>
+    <div class="footer-container">
         <p>&copy; 2024 eGrocery Store. All rights reserved.</p>
-    </footer>
-    <!--footer-end---------------->
+    </div>
+</footer>
 
     <!-- Cart Modal -->
 <div id="cart-modal" class="modal">
@@ -470,90 +692,91 @@
     </div>
 </div>
 
-
-    <script>
-        let cart = [];
-
-        function addToCart(productName, price) {
-            cart.push({ name: productName, price: price });
-            document.getElementById('cart-count').innerText = cart.length;
-
-            // Add bounce animation
-            const cartCount = document.getElementById('cart-count');
-            cartCount.classList.add('animate');
-
-            // Remove animation class after animation ends
-            cartCount.addEventListener('animationend', function() {
-                cartCount.classList.remove('animate');
-            }, { once: true });
-
-            alert(`${productName} has been added to your cart!`);
-        }
-
-        function showCart() {
-            const cartItemsDiv = document.getElementById('cart-items');
-            cartItemsDiv.innerHTML = ''; // Clear previous items
-
-            let total = 0;
-            cart.forEach(item => {
-                total += item.price;
-                cartItemsDiv.innerHTML += `<p>${item.name} - $${item.price.toFixed(2)}</p>`;
-            });
-
-            document.getElementById('cart-total').innerHTML = `<strong>Total: $${total.toFixed(2)}</strong>`;
-
-            // Display the modal
-            document.getElementById('cart-modal').style.display = 'block';
-        }
-
-        function closeCart() {
-            document.getElementById('cart-modal').style.display = 'none';
-        }
-
-        function viewRecipe(recipeName, ingredients, steps) {
-            let recipeDetails = `Recipe: ${recipeName}\n\nIngredients:\n- ${ingredients.join('\n- ')}\n\nSteps:\n1. ${steps.join('\n1. ')}`;
-            alert(recipeDetails);
-        }
-    function placeOrder() {
-    if (cart.length === 0) {
-        alert("Your cart is empty! Add items to your cart before placing an order.");
-    } else {
-        // Here you can add further processing like sending the order to the server
-        alert("Your order has been placed! Thank you for shopping with us.");
-        
-        // Optionally, clear the cart after placing the order
-        cart = [];
+<script>
+    let cart = [];
+    
+    // Function to add items to cart
+    function addToCart(productName, price) {
+        cart.push({ name: productName, price: price });
         document.getElementById('cart-count').innerText = cart.length;
-        closeCart(); // Close the cart modal
+    
+        const cartCount = document.getElementById('cart-count');
+        cartCount.classList.add('animate');
+    
+        cartCount.addEventListener('animationend', function() {
+            cartCount.classList.remove('animate');
+        }, { once: true });
+    
+        alert(`${productName} has been added to your cart!`);
     }
-}
-function placeOrder() {
-    if (cart.length === 0) {
-        alert("Your cart is empty! Add items to your cart before placing an order.");
-    } else {
-        // Redirect to the address page
-        window.location.href = "address.html"; // Redirect to address input page
+    
+    function showCart() {
+        const cartModal = document.getElementById('cart-modal');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalContainer = document.getElementById('cart-total');
+    
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+    
+        cart.forEach((item) => {
+            const itemElement = document.createElement('p');
+            itemElement.textContent = `${item.name} - ${item.price} Rs`;
+            cartItemsContainer.appendChild(itemElement);
+    
+            total += parseFloat(item.price);
+        });
+    
+        cartTotalContainer.innerHTML = `<strong>Total: ${total} Rs</strong>`;
+        cartModal.style.display = 'block';
     }
-}
-// Example login function in login.html
-function login() {
-    const username = document.getElementById('username-input').value; // Get the username from the input
-    // Here you would typically verify the login credentials
-    // If login is successful:
-    localStorage.setItem('loggedInUser', username); // Store username in local storage
-    window.location.href = 'index.html'; // Redirect to the index page
-}
-
-
-
-        // Close the modal when clicking anywhere outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById('cart-modal');
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
+    
+    function closeCart() {
+        document.getElementById('cart-modal').style.display = 'none';
+    }
+    
+    function placeOrder() {
+        const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+    
+        if (total < 100) {
+            alert("The total amount must be at least 100 Rs to place an order.");
+        } else {
+            const deliveryCharge = 50;
+            const totalWithDelivery = total + deliveryCharge;
+    
+            alert("Order placed successfully!");
+    
+            // Save totalWithDelivery in session storage for the delivery page
+            sessionStorage.setItem('orderTotalWithDelivery', totalWithDelivery);
+    
+            cart = [];
+            document.getElementById('cart-count').innerText = '0';
+            closeCart();
+    
+            window.location.href = "address.html";
         }
-                
+    }
+
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    console.log('Logged In User:', loggedInUser)
+
+// Check if a user is logged in and display the greeting
+if (loggedInUser) {
+    const userGreeting = document.getElementById('user-greeting');
+    userGreeting.innerHTML = `Hello, ${loggedInUser}! <a href="#" onclick="logout()">Logout</a>`;
+}
+
+// Logout function to clear user data and refresh the page
+function logout() {
+    localStorage.removeItem('loggedInUser');
+    window.location.reload(); // Refresh the page to update UI
+}
+    
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        const cartModal = document.getElementById('cart-modal');
+        if (event.target === cartModal) {
+            closeCart();
+        }
+    };
     </script>
-</body>
-</html>
+    

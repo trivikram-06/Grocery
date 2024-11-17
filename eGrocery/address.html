@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,11 +31,17 @@
         <button type="submit">Submit Address</button>
     </form>
 
+    <div id="order-status" style="display: none;">
+        <h2>Your Order Status</h2>
+        <p id="order-id"></p>
+        <p id="expected-delivery-time"></p>
+        <p id="order-status-text"></p>
+    </div>
+
     <script>
         document.getElementById('address-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
-            
-            // Collecting input values
+            event.preventDefault();
+
             const fullName = document.getElementById('full-name').value;
             const phone = document.getElementById('phone').value;
             const streetName = document.getElementById('street-name').value;
@@ -43,12 +49,24 @@
             const city = document.getElementById('city').value;
             const state = document.getElementById('state').value;
 
-            // Simulate delivery process (replace with your delivery logic)
-            alert(`Delivery initiated!\n\nDetails:\nName: ${fullName}\nPhone: ${phone}\nAddress: ${doorNo}, ${streetName}, ${city}, ${state}`);
+            // Retrieve total with delivery charge from session storage
+            const totalWithDelivery = sessionStorage.getItem('orderTotalWithDelivery') || 0;
 
-            // Here you can handle the address (e.g., send it to the server)
-            // Redirect back to the main page or show a confirmation
-            window.location.href = "index.html"; // Change to your desired redirection
+            // Generate a unique order ID
+            const orderId = `ORD${Date.now()}`;
+
+            // Calculate expected delivery time (1 hour from now)
+            const deliveryTime = new Date(Date.now() + 60 * 60 * 1000);
+            const formattedTime = deliveryTime.toLocaleTimeString();
+
+            // Show order details and status
+            document.getElementById('order-id').innerText = `Order ID: ${orderId}`;
+            document.getElementById('expected-delivery-time').innerText = `Expected Delivery Time: ${formattedTime}`;
+            document.getElementById('order-status-text').innerText = `Your order total is ${totalWithDelivery} Rs. Your order is being processed and will be delivered within the next hour.`;
+
+            document.getElementById('order-status').style.display = 'block';
+
+            alert(`Delivery initiated!\n\nDetails:\nName: ${fullName}\nPhone: ${phone}\nAddress: ${doorNo}, ${streetName}, ${city}, ${state}\nTotal: ${totalWithDelivery} Rs (including 50 Rs delivery charge)\nOrder ID: ${orderId}\nExpected Delivery Time: ${formattedTime}`);
         });
     </script>
 </body>
